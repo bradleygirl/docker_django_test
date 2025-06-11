@@ -13,6 +13,8 @@ x-app: &app
 services:
   db:
     image: postgres:17
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=tutorial
       - POSTGRES_PASSWORD=tutorial
@@ -24,3 +26,6 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "127.0.0.1:8000:8000"
+
+volumes:
+  postgres_data:
